@@ -1,81 +1,82 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Header from '../layouts/Header.astro';
+import TopNav from '../layouts/TopNav.astro';
+import '@fontsource/Montserrat';
+import Background from '../layouts/Background.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<Header title="Elliott Ives">
+    <main class="w-full h-full min-h-screen bg-slate-900 flex flex-col gap-5 items-center text-slate-50 z-50">
+        <Background />
+        <TopNav />
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+        <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl mt-44 max-s:mt-36 relative">
+            <img class="circle w-64 h-64 object-cover top-0 absolute mt-[-150px] center-absolute border-2 border-slate-50" src="/images/me.png" />
+
+            <div class="flex flex-col gap-3 mt-20">
+                <h1 class="text-5xl text-center">
+                    Hi, I'm <span class="bg-gradient-to-r from-blue-600 to-purple-500 text-transparent bg-clip-text font-bold text-6xl">Elliott Ives</span>
+                </h1>
+
+                <h1 class="text-left">I develop sleek, expressive, and ergonomic applications for the web.</h1>
+            </div>
+        </div>
+
+        <div class="h-full mx-3">
+            <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-5">
+                <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl">
+                    <h1 class="mb-5 text-2xl">About Me</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ullam eveniet, ipsa sequi dolorem eum earum. Impedit illum minus fugit
+                        similique, alias ut hic reprehenderit perferendis corporis at, sed porro!
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl">
+                    <h1 class="mb-5 text-2xl">My Work Experience</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, aut! Accusamus ipsa voluptatum porro ab molestiae quo nulla
+                        blanditiis, delectus exercitationem quaerat corrupti? Laboriosam commodi eligendi asperiores nesciunt similique vel.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl">
+                    <h1 class="mb-5 text-2xl">My Favorite Tools</h1>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam officia corporis harum adipisci quisquam omnis asperiores voluptas
+                        pariatur, ducimus praesentium quis, modi cum odio maiores illum veniam quasi dolore iure!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</Header>
+
+<style is:global>
+    * {
+        font-family: 'Montserrat', sans-serif;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+    .circle {
+        border-radius: 50%;
+    }
+
+    .center-absolute {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
 </style>
