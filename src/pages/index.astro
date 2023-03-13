@@ -1,7 +1,6 @@
 ---
 import Header from '../layouts/Header.astro';
 import TopNav from '../layouts/TopNav.astro';
-import '@fontsource/Montserrat';
 import Background from '../layouts/Background.astro';
 ---
 
@@ -53,6 +52,11 @@ import Background from '../layouts/Background.astro';
 </Header>
 
 <style is:global>
+    @font-face {
+        font-family: 'Montserrat';
+        src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    }
+
     * {
         font-family: 'Montserrat', sans-serif;
         image-rendering: -moz-crisp-edges;
