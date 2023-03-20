@@ -2,6 +2,7 @@
 import Header from '../layouts/Header.astro';
 import TopNav from '../layouts/TopNav.astro';
 import Background from '../layouts/Background.astro';
+import Panel from '../components/Panel.astro';
 ---
 
 <Header title="Elliott Ives">
@@ -9,47 +10,72 @@ import Background from '../layouts/Background.astro';
         <Background />
         <TopNav />
 
-        <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl mt-44 max-s:mt-36 relative">
-            <img class="circle w-64 h-64 object-cover top-0 absolute mt-[-150px] center-absolute border-2 border-slate-50" src="/images/me.png" />
+        <div
+            class="max-sm:w-11/12 bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl mt-44 max-s:mt-36 relative transform transition-all duration-150 ease-out fade-in"
+        >
+            <img class="circle w-64 h-64 object-cover top-0 absolute mt-[-180px] center-absolute border-2 border-slate-50" src="/images/me.png" />
 
-            <div class="flex flex-col gap-3 mt-20">
+            <div class="flex flex-col gap-3 mt-20 justify-center items-center">
                 <h1 class="text-5xl text-center">
                     Hi, I'm <span class="bg-gradient-to-r from-blue-600 to-purple-500 text-transparent bg-clip-text font-bold text-6xl">Elliott Ives</span>
                 </h1>
 
                 <h1 class="text-left">I develop sleek, expressive, and ergonomic applications for the web.</h1>
+
+                <a href="mailto:elliottives17@gmail.com" class="w-full h-full text-center">
+                    <button
+                        class="relative border-2 border-slate-50 mt-3 px-3 py-2 w-1/2 rounded-full h-full hover:translate-y-[-2px] transition duration-300 ease-in-out group active:scale-95"
+                    >
+                        <p>Get In Touch</p>
+                        <i
+                            class="bottom-1 gg-mail absolute right-7 opacity-0 text-white group-hover:translate-y-[-0.6rem] min-xs:group-hover:opacity-100 transition duration-300 ease-in-out"
+                        ></i>
+                    </button>
+                </a>
             </div>
         </div>
 
-        <div class="h-full mx-3">
-            <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-5">
-                <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl">
-                    <h1 class="mb-5 text-2xl">About Me</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ullam eveniet, ipsa sequi dolorem eum earum. Impedit illum minus fugit
-                        similique, alias ut hic reprehenderit perferendis corporis at, sed porro!
-                    </p>
-                </div>
+        <div class="h-full max-lg:w-11/12 lg:w-[90%] mb-5">
+            <div id="panels" class="grid xl:grid-cols-3 lg:grid-cols-1 gap-5">
+                <Panel
+                    header="About Me"
+                    body="I am a developer currently based in Wichita, KS. I specialize in frontend techologies, but at the same time I don't hesitate to dive into a database or API when the opportunity presents itself! I always look forward to testing my capabilities against new and unique challenges. In my time away from coding personally or professionally, I love winding down at coffee/tea houses, learning to play an instrument, or reading manga."
+                    animate={true}
+                    animationDelay={100}
+                />
 
-                <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl">
-                    <h1 class="mb-5 text-2xl">My Work Experience</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, aut! Accusamus ipsa voluptatum porro ab molestiae quo nulla
-                        blanditiis, delectus exercitationem quaerat corrupti? Laboriosam commodi eligendi asperiores nesciunt similique vel.
-                    </p>
-                </div>
+                <Panel
+                    header="Work Experience"
+                    body="Shortly after graduating college, I joined current company: Spectrum, LLC. I was admitted to the team when it was still very small and primed to enter a significant growth phase. Consequently, I have had the fortunate position of learning a multitude of new technologies as all my new team members and I spearhead the effort to revolutionize the way Spectrum has done business. I have both supported long-running, large codebases as well as helped architect greenfield projects."
+                    animate={true}
+                    animationDelay={300}
+                />
 
-                <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl">
-                    <h1 class="mb-5 text-2xl">My Favorite Tools</h1>
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam officia corporis harum adipisci quisquam omnis asperiores voluptas
-                        pariatur, ducimus praesentium quis, modi cum odio maiores illum veniam quasi dolore iure!
-                    </p>
-                </div>
+                <Panel
+                    header="Favorite Technologies"
+                    body="I learned frontend development on Angular 12, but I have since fallen in love with React as my projects have transitioned to using NextJS. When it comes to supercharging my velocity, React, Prisma, and TailwindCSS have fit perfectly for me. I also make heavy use of Zod when it comes to validating data passed to any NodeJS-based backends that I build."
+                    animate={true}
+                    animationDelay={500}
+                />
             </div>
         </div>
     </main>
 </Header>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const panelCollection = document.getElementById('panels')?.children;
+
+        if (!panelCollection) return;
+
+        setTimeout(() => {
+            [...panelCollection].forEach((p) => {
+                p.classList.replace('opacity-0', 'opacity-100');
+                p.classList.replace('translate-y-5', 'translate-y-0');
+            });
+        }, 200);
+    });
+</script>
 
 <style is:global>
     @font-face {
@@ -82,5 +108,45 @@ import Background from '../layouts/Background.astro';
     svg {
         width: 100%;
         height: 100%;
+    }
+
+    .gg-mail,
+    .gg-mail::after {
+        display: block;
+        box-sizing: border-box;
+        height: 14px;
+        border: 2px solid;
+    }
+
+    .gg-mail {
+        overflow: hidden;
+        transform: scale(var(--ggs, 1));
+        width: 18px;
+        border-radius: 2px;
+    }
+
+    .gg-mail::after {
+        content: '';
+        position: absolute;
+        border-radius: 3px;
+        width: 14px;
+        transform: rotate(-45deg);
+        bottom: 3px;
+        left: 0;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .fade-in {
+        animation: fade-in ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
     }
 </style>
