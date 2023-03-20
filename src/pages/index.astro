@@ -11,7 +11,7 @@ import Panel from '../components/Panel.astro';
         <TopNav />
 
         <div
-            class="max-sm:w-11/12 bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl mt-44 max-s:mt-36 relative transform transition-all duration-150 ease-out fade-in"
+            class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl mt-44 max-s:mt-36 relative transform transition-all duration-150 ease-out fade-in"
         >
             <img class="circle w-64 h-64 object-cover top-0 absolute mt-[-180px] center-absolute border-2 border-slate-50" src="/images/me.png" />
 
@@ -41,42 +41,26 @@ import Panel from '../components/Panel.astro';
                     header="About Me"
                     body="I am a developer currently based in Wichita, KS. I specialize in frontend techologies, but at the same time I don't hesitate to dive into a database or API when the opportunity presents itself! I always look forward to testing my capabilities against new and unique challenges. In my time away from coding personally or professionally, I love winding down at coffee/tea houses, learning to play an instrument, or reading manga."
                     animate={true}
-                    animationDelay={100}
+                    animationDelay={undefined}
                 />
 
                 <Panel
                     header="Work Experience"
                     body="Shortly after graduating college, I joined current company: Spectrum, LLC. I was admitted to the team when it was still very small and primed to enter a significant growth phase. Consequently, I have had the fortunate position of learning a multitude of new technologies as all my new team members and I spearhead the effort to revolutionize the way Spectrum has done business. I have both supported long-running, large codebases as well as helped architect greenfield projects."
                     animate={true}
-                    animationDelay={300}
+                    animationDelay={undefined}
                 />
 
                 <Panel
                     header="Favorite Technologies"
                     body="I learned frontend development on Angular 12, but I have since fallen in love with React as my projects have transitioned to using NextJS. When it comes to supercharging my velocity, React, Prisma, and TailwindCSS have fit perfectly for me. I also make heavy use of Zod when it comes to validating data passed to any NodeJS-based backends that I build."
                     animate={true}
-                    animationDelay={500}
+                    animationDelay="1000"
                 />
             </div>
         </div>
     </main>
 </Header>
-
-<script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        const panelCollection = document.getElementById('panels')?.children;
-
-        if (!panelCollection) return;
-
-        setTimeout(() => {
-            [...panelCollection].forEach((p) => {
-                p.classList.replace('opacity-0', 'opacity-100');
-                p.classList.replace('translate-y-5', 'translate-y-0');
-                console.log('does javascript run?');
-            });
-        }, 200);
-    });
-</script>
 
 <style is:global>
     @font-face {
@@ -146,8 +130,34 @@ import Panel from '../components/Panel.astro';
     }
 
     .fade-in {
-        animation: fade-in ease 1s;
+        animation: fade-in ease-out 1s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
+    }
+
+    @keyframes panel-fade-in {
+        from {
+            transform: translateY(10px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+
+    #panels div:nth-child(1) {
+        animation: panel-fade-in forwards 1s;
+        animation-delay: 150ms;
+    }
+
+    #panels div:nth-child(2) {
+        animation: panel-fade-in forwards 1s;
+        animation-delay: 300ms;
+    }
+
+    #panels div:nth-child(3) {
+        animation: panel-fade-in forwards 1s;
+        animation-delay: 450ms;
     }
 </style>
