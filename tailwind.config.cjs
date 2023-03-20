@@ -4,7 +4,10 @@ module.exports = {
     theme: {
         extend: {
             screens: {
-                'max-s': { max: '640px' },
+                'min-xs': { min: '485px' },
+                'max-sm': { max: '640px' },
+                'max-lg': { max: '1024px' },
+                'max-583px': { max: '583px' },
             },
         },
     },
