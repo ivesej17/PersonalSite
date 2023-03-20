@@ -13,7 +13,7 @@ const { buttonText, imagePath, href } = Astro.props;
 
 <a href={href} target="_blank" rel="noopener noreferrer">
     <button
-        class={`border px-3 py-2 w-32 rounded-lg flex items-center hover:translate-y-[-2px] hover:shadow-lg transition ease-in-out duration-300 hover:scale-105 hover:bg-gradient-to-tr from-blue-700 to-purple-700 active:scale-95 hover:border-slate-900
+        class={`border px-3 py-2 w-32 rounded-lg flex items-center hover:translate-y-[-2px] transition ease-in-out duration-300 hover:bg-gradient-to-tr from-blue-700 to-purple-700 active:scale-95 hover:border-slate-900
         ${imagePath ? 'justify-between' : 'justify-center'}`}
     >
         <p>{buttonText}</p>
