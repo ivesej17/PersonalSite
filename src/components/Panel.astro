@@ -1,0 +1,23 @@
+---
+// Here is where we define the props for this component.
+// Whenever you define an interface Props, it is automagically picked up by Astro.
+
+export interface Props {
+    header: string;
+    body: string;
+    animationDelay?: number;
+    animate: boolean;
+}
+
+const { header, body, animationDelay, animate } = Astro.props;
+---
+
+<div
+    class={`bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl 
+        ${animate ? 'transition-all ease-out opacity-0 duration-500 translate-y-5' : ''}
+        ${animationDelay ? `delay-${animationDelay}` : ''}
+    `}
+>
+    <h1 class="mb-5 text-2xl font-semibold">{header}</h1>
+    <p>{body}</p>
+</div>
