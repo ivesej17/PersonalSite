@@ -1,34 +1,46 @@
 ---
 import Header from '../layouts/Header.astro';
-import TopNav from '../layouts/TopNav.astro';
 import Background from '../layouts/Background.astro';
 import Panel from '../components/Panel.astro';
+import LinkButton from '../components/LinkButton.astro';
 ---
 
 <Header title="Elliott Ives">
-    <main class="w-full h-full min-h-screen bg-slate-900 flex flex-col gap-5 items-center text-slate-50 z-50">
+    <main class="w-full h-full min-h-screen bg-slate-900 flex flex-col gap-5 items-center justify-center text-slate-50 z-50">
         <Background />
-        <TopNav />
 
-        <div
-            class="max-sm:w-11/12 bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl mt-44 max-s:mt-36 relative transform transition-all duration-150 ease-out fade-in"
-        >
-            <img class="circle w-64 h-64 object-cover top-0 absolute mt-[-180px] center-absolute border-2 border-slate-50" src="/images/me.png" />
+        <div class="max-sm:w-11/12 bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl mt-44 relative">
+            <img class="circle w-64 h-64 object-cover top-0 absolute center-absolute border-2 border-slate-50" src="/images/me.png" />
 
-            <div class="flex flex-col gap-3 mt-20 justify-center items-center">
-                <h1 class="text-5xl text-center">
-                    Hi, I'm <span class="bg-gradient-to-r from-blue-600 to-purple-500 text-transparent bg-clip-text font-bold text-6xl">Elliott Ives</span>
-                </h1>
+            <div class="flex flex-col gap-5 mt-20 justify-center items-center">
+                <div>
+                    <h1 class="text-5xl text-center">
+                        <span class="fade-first opacity-0">Hi,</span>
+                        <span class="fade-second opacity-0">I'm</span>
+                        <span class="fade-second bg-gradient-to-r from-blue-600 to-purple-500 text-transparent bg-clip-text font-bold text-6xl opacity-0"
+                            >Elliott Ives</span
+                        >
+                    </h1>
+                    <h1 class="text-center mt-3 fade-third opacity-0">I develop sleek, expressive, and ergonomic applications for the web.</h1>
+                </div>
 
-                <h1 class="text-left">I develop sleek, expressive, and ergonomic applications for the web.</h1>
+                <div class="flex gap-8 justify-center items-center mt-3 fade-fourth opacity-0">
+                    <LinkButton href="https://github.com/ivesej17" buttonText="GitHub" imagePath={'/images/github-mark-white.svg'} />
+                    <LinkButton href="https://www.linkedin.com/in/elliott-ives-3b42a9200/" buttonText="LinkedIn" imagePath={'/images/linkedin-3-64.png'} />
+                    <LinkButton
+                        href="https://drive.google.com/file/d/1z4aLsnkRJA7EvWy-gPqARKfyVnyLWDpX/view?usp=share_link"
+                        buttonText="Resume"
+                        imagePath={undefined}
+                    />
+                </div>
 
-                <a href="mailto:elliottives17@gmail.com" class="w-full text-center">
+                <a href="mailto:elliottives17@gmail.com" class="w-full text-center fade-fourth opacity-0">
                     <button
-                        class="relative border-2 border-slate-50 mt-3 px-3 py-2 w-1/2 rounded-full hover:translate-y-[-2px] transition duration-300 ease-in-out group active:scale-95"
+                        class="relative border-2 border-slate-50 mt-3 px-3 py-2 max-sm:w-full w-1/2 rounded-full hover:translate-y-[-2px] transition duration-300 ease-in-out group active:scale-95"
                     >
                         <p>Get In Touch</p>
                         <i
-                            class="bottom-1 gg-mail absolute right-7 opacity-0 text-white group-hover:translate-y-[-0.6rem] min-xs:group-hover:opacity-100 transition duration-300 ease-in-out"
+                            class="bottom-1 gg-mail absolute right-7 opacity-0 text-white group-hover:translate-y-[-0.6rem] group-hover:opacity-100 transition duration-300 ease-in-out"
                         ></i>
                     </button>
                 </a>
@@ -87,7 +99,7 @@ import Panel from '../components/Panel.astro';
     .center-absolute {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -135%);
     }
 
     svg {
@@ -121,21 +133,6 @@ import Panel from '../components/Panel.astro';
     }
 
     @keyframes fade-in {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    .fade-in {
-        animation: fade-in ease-out 1s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-    }
-
-    @keyframes panel-fade-in {
         from {
             transform: translateY(10px);
             opacity: 0;
@@ -146,18 +143,38 @@ import Panel from '../components/Panel.astro';
         }
     }
 
+    .fade-first {
+        animation: fade-in 1s forwards;
+        animation-delay: 200ms;
+    }
+
+    .fade-second {
+        animation: fade-in 1s forwards;
+        animation-delay: 1000ms;
+    }
+
+    .fade-third {
+        animation: fade-in 1s forwards;
+        animation-delay: 2000ms;
+    }
+
+    .fade-fourth {
+        animation: fade-in 1s forwards;
+        animation-delay: 3000ms;
+    }
+
     #panels div:nth-child(1) {
-        animation: panel-fade-in forwards 1s;
-        animation-delay: 150ms;
+        animation: fade-in forwards 1s;
+        animation-delay: 3200ms;
     }
 
     #panels div:nth-child(2) {
-        animation: panel-fade-in forwards 1s;
-        animation-delay: 300ms;
+        animation: fade-in forwards 1s;
+        animation-delay: 3350ms;
     }
 
     #panels div:nth-child(3) {
-        animation: panel-fade-in forwards 1s;
-        animation-delay: 450ms;
+        animation: fade-in forwards 1s;
+        animation-delay: 3500ms;
     }
 </style>
