@@ -6,17 +6,18 @@ export interface Props {
     buttonText: string;
     imagePath: string | undefined;
     href: string;
+    cssIconName: string | undefined;
 }
 
-const { buttonText, imagePath, href } = Astro.props;
+const { buttonText, imagePath, href, cssIconName } = Astro.props;
 ---
 
-<a href={href} target="_blank" rel="noopener noreferrer">
+<a href={href} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center max-sm:w-full">
     <button
-        class={`border px-3 py-2 w-32 rounded-lg flex items-center hover:translate-y-[-2px] transition ease-in-out duration-300 hover:bg-gradient-to-tr from-blue-700 to-purple-700 active:scale-95 hover:border-slate-900
-        ${imagePath ? 'justify-between' : 'justify-center'}`}
+        class="border px-3 py-2 w-full rounded-lg flex items-center justify-center gap-5 hover:translate-y-[-2px] transition ease-in-out duration-300 hover:bg-gradient-to-tr from-blue-700 to-purple-700 active:scale-95 hover:border-slate-900"
     >
         <p>{buttonText}</p>
         {imagePath && <img src={imagePath} height="20" width="20" />}
+        {cssIconName && <i class={cssIconName} />}
     </button>
 </a>
