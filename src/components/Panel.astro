@@ -5,11 +5,9 @@
 export interface Props {
     header: string;
     body: string;
-    animationDelay?: string;
-    animate: boolean;
 }
 
-const { header, body, animationDelay, animate } = Astro.props;
+const { header, body } = Astro.props;
 ---
 
 <div class="bg-slate-900 shadow-xl p-5 border-2 border-slate-800 rounded-xl opacity-0">

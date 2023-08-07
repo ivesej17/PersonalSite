@@ -4,9 +4,9 @@
 
 export interface Props {
     buttonText: string;
-    imagePath: string | undefined;
     href: string;
-    cssIconName: string | undefined;
+    imagePath?: string | undefined;
+    cssIconName?: string | undefined;
 }
 
 const { buttonText, imagePath, href, cssIconName } = Astro.props;
